@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stock Tracker Test</title>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+</head>
+<body>
+  <h1>Testing Socket.IO Connection</h1>
+  <button onclick="trackCompanies()">Track RELIANCE</button>
+
+  <script>
+    const socket = io("http://localhost:5000");
+
+    socket.on("connect", () => {
+      console.log("Connected to backend");
+    });
+
+    socket.on("connected", (data) => {
+      console.log("Server says:", data.message);
+    });
+
+    socket.on("stock_update", (data) => {
+      console.log("Stock update received:", data);
+    });
+
+    function trackCompanies() {
+      socket.emit("track_companies", {
+        symbols: ["RELIANCE.NS"]
+      });
+    }
+  </script>
+</body>
+</html>
