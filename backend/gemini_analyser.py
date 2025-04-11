@@ -24,7 +24,8 @@ Analyze the trend of the stock prices for the company '{symbol}' based on the fo
 {prices_str}
 
 Please provide:
-1. A natural language summary of the trend.
+ A natural language summary of the trend.
+
 
 
 Keep it short, useful, and actionable.
