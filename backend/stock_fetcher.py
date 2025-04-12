@@ -25,8 +25,11 @@ class StockFetcher:
 
     def fetch_and_update(self):
         updated_data = {}
+        symbols = list(self.price_queues.keys())
 
-        for symbol, queue in self.price_queues.items():
+        # for symbol, queue in self.price_queues.items():
+        for symbol in symbols:
+            queue = self.price_queues[symbol]
             try:
                 stock = yf.Ticker(symbol)
                 price = stock.info.get("regularMarketPrice")
